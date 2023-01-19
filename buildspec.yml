@@ -3,10 +3,10 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - $(aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 634966137286.dkr.ecr.eu-west-2.amazonaws.com)
   build:
     commands:
-      - docker build -t youtube:latest .
+      - docker build -t test-demo:latest .
       - docker tag <IMAGE_NAME> <ECR_URL>
   post_build:
     commands:
